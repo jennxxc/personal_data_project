@@ -1,0 +1,110 @@
+# Genetic liability to loneliness and the risk of clinically diagnosed Alzheimer’s disease
+
+## Research question
+Does genetically predicted liability to loneliness causally influence the risk of clinically diagnosed Alzheimer’s disease?
+
+## Hypothesis
+H0: β_loneliness→AD = 0  
+H1: β_loneliness→AD ≠ 0
+
+## Data
+### Exposure
+Loneliness GWAS from Day et al. (2018), based on the UK Biobank question:
+“Do you often feel lonely?”
+
+### Outcome
+Alzheimer’s disease GWAS from Kunkle et al. (2019), using clinically diagnosed or autopsy-documented AD cases of European ancestry.
+
+OpenGWAS ID: `ieu-b-2`
+
+## Instrument selection
+Genome-wide significant SNPs associated with loneliness were selected using:
+
+- P < 5 × 10^-8
+- LD clumping: r² < 0.001
+- Clumping window: 10,000 kb
+- European LD reference population
+
+A total of 540 genome-wide significant SNPs were identified. After LD clumping, 13 independent instruments remained.
+
+Instrument strength was assessed using:
+
+F ≈ (β / SE)²
+
+All candidate instruments had F-statistics above 10.
+
+During harmonisation, two palindromic SNPs with intermediate allele frequencies were excluded, leaving 11 SNPs for the final MR analysis.
+
+## Mendelian randomization analysis
+The primary analysis used inverse-variance weighted (IVW) MR.
+
+Sensitivity estimators included:
+
+- MR-Egger
+- Weighted median
+- Simple mode
+- Weighted mode
+
+## Results
+
+### Main MR estimate
+
+| Method | SNPs | OR | 95% CI | P-value |
+|---|---:|---:|---:|---:|
+| IVW | 11 | 0.64 | 0.10–4.01 | 0.631 |
+| Weighted median | 11 | 0.52 | 0.05–5.79 | 0.593 |
+| MR-Egger | 11 | 1466.08 | 0.26–8.38×10^6 | 0.133 |
+| Simple mode | 11 | 0.19 | 0.003–10.92 | 0.442 |
+| Weighted mode | 11 | 0.27 | 0.008–8.50 | 0.470 |
+
+The primary IVW analysis did not provide evidence of a causal effect of genetically predicted loneliness liability on Alzheimer’s disease risk.
+
+The IVW estimate was imprecise, with a wide confidence interval spanning both potentially protective and harmful effects.
+
+## Sensitivity analyses
+
+### Heterogeneity
+Cochran’s Q test showed no evidence of significant heterogeneity:
+
+- IVW: Q = 10.60, P = 0.389
+- MR-Egger: Q = 7.39, P = 0.597
+
+### Horizontal pleiotropy
+The MR-Egger intercept was:
+
+- Intercept = -0.043
+- P = 0.107
+
+This provided no evidence of directional horizontal pleiotropy.
+
+### Leave-one-out analysis
+Leave-one-out analysis showed that no single SNP appeared to drive the overall IVW estimate.
+
+### Single-SNP analysis
+Individual SNP estimates were generally imprecise and distributed on both sides of the null.
+
+## Interpretation
+This two-sample Mendelian randomization analysis did not provide evidence that genetically predicted liability to self-reported loneliness causally influences the risk of clinically diagnosed Alzheimer’s disease.
+
+However, the confidence intervals were wide and the analysis was based on only 11 usable instruments. Therefore, the findings should be interpreted as inconclusive rather than as evidence that loneliness has no causal effect on Alzheimer’s disease.
+
+## Key limitations
+- Loneliness was measured using a single self-reported binary item rather than a multidimensional loneliness scale.
+- Only a small number of independent genetic instruments were available.
+- MR-Egger estimates were highly imprecise.
+- The analysis assumes that the genetic instruments affect Alzheimer’s disease only through loneliness and not through alternative pathways.
+- Residual horizontal pleiotropy cannot be completely excluded despite non-significant sensitivity tests.
+
+## Figures
+- MR scatter plot
+- Single-SNP forest plot
+- Leave-one-out analysis
+
+## Tools
+R packages:
+- TwoSampleMR
+- ieugwasr
+- dplyr
+
+#Summary
+I used two-sample Mendelian randomization to test whether genetic liability to loneliness causally influences clinically diagnosed Alzheimer’s disease. Thirteen independent loneliness-associated variants were identified, of which 11 remained after harmonisation. The primary IVW analysis showed no evidence of a causal effect (OR 0.64, 95% CI 0.10–4.01, P = 0.63), while sensitivity analyses showed no clear heterogeneity, directional pleiotropy, or single-SNP dominance. Estimates were imprecise, so the findings were considered inconclusive rather than evidence of no causal effect.

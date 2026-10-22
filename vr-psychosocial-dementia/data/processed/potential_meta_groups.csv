@@ -1,0 +1,14 @@
+intervention_group,outcome_group,n_independent_studies,designs,screening_ids
+reminiscence,depression_anxiety_mood,6,nonrandomized_controlled; randomized_parallel_or_unclear,VRD0139; VRD0140; VRD0172; VRD0447; VRD0571; VRD0997
+reminiscence,apathy,5,nonrandomized_controlled; randomized_crossover,VRD0123; VRD0139; VRD0140; VRD0172; VRD0272
+other_vr,agitation_aggression,4,randomized_parallel_or_unclear,VRD0008; VRD0228; VRD0282; VRD1326
+reminiscence,agitation_aggression,4,nonrandomized_controlled; randomized_crossover; randomized_parallel_or_unclear,VRD0123; VRD0140; VRD0172; VRD0447
+reminiscence,engagement,4,nonrandomized_controlled; randomized_crossover; randomized_parallel_or_unclear,VRD0123; VRD0172; VRD0272; VRD0447
+social_dyadic,apathy,4,nonrandomized_controlled,VRD0139; VRD0140; VRD0234; VRD0272
+other_vr,depression_anxiety_mood,3,randomized_parallel_or_unclear,VRD0228; VRD0282; VRD1326
+reminiscence,quality_of_life,3,nonrandomized_controlled; randomized_crossover; randomized_parallel_or_unclear,VRD0123; VRD0272; VRD0447
+social_dyadic,depression_anxiety_mood,3,nonrandomized_controlled; randomized_parallel_or_unclear,VRD0139; VRD0140; VRD0447
+social_dyadic,quality_of_life,3,nonrandomized_controlled; randomized_parallel_or_unclear,VRD0234; VRD0272; VRD0447
+other_vr,apathy,2,randomized_parallel_or_unclear,VRD0008; VRD0228
+social_dyadic,agitation_aggression,2,nonrandomized_controlled; randomized_parallel_or_unclear,VRD0140; VRD0447
+social_dyadic,engagement,2,nonrandomized_controlled; randomized_parallel_or_unclear,VRD0272; VRD0447

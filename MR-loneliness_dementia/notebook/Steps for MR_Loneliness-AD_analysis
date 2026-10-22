@@ -1,0 +1,32 @@
+Step 1  Loneliness GWAS preparation                 ✅
+
+Step 2  Instrument selection                        ✅
+        P < 5×10⁻⁸
+        540 candidate SNPs
+        LD clumping
+        → 13 independent instruments
+        F-statistics > 10
+
+Step 3  AD outcome selection                        ✅
+        Kunkle 2019
+        OpenGWAS: ieu-b-2
+        21,982 AD cases
+        41,944 controls
+
+Step 4  Harmonisation                               ✅
+        13 instruments
+        → 2 ambiguous palindromic SNPs removed
+        → 11 SNPs retained
+
+Step 5  Main MR                                     ✅
+        IVW
+        Weighted median
+        MR-Egger
+        Mode methods
+
+Step 6  Sensitivity analysis                        ✅
+        Heterogeneity
+        Egger intercept
+        Leave-one-out
+        Single-SNP
+        Scatter plot

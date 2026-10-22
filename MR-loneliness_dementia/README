@@ -1,0 +1,40 @@
+1. Research question
+Does genetically predicted liability to loneliness causally influence the risk of clinically diagnosed Alzheimer’s disease?
+
+2. Hypothesis
+H0:β_loneliness→AD=0
+H1:β_loneliness→AD=0
+
+3. Data
+Exposure: Day et al. 2018 loneliness GWAS
+Outcome: Kunkle et al. 2019 diagnosed AD GWAS
+European ancestry
+
+4. Instrument selection:
+P<5×10^−8
+540 candidate SNPs
+LD clumping: r^2 <0.001, 10,000 kb
+13 independent SNPs
+F-statistics all >10
+2 palindromic ambiguous SNPs removed during harmonisation
+11 SNPs entered MR
+
+5. Main MR results
+IVW: OR 0.64, 95% CI 0.10–4.01, P=0.631
+Weighted median: OR 0.52, P=0.593
+MR-Egger: very imprecise, P=0.133
+
+6. Sensitivity analyses
+IVW heterogeneity: Q=10.60, P=0.389
+Egger intercept: −0.043, P=0.107
+Leave-one-out: no single SNP dominated
+Single-SNP estimates: broad and imprecise
+
+7. Interpretation
+No evidence of a causal effect
+But estimates are imprecise, so conclusion is inconclusive rather than evidence of no effect
+
+8. Figures
+MR scatter plot
+Single-SNP forest plot
+Leave-one-out plot

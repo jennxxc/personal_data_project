@@ -1,0 +1,132 @@
+---
+title: 'lonliness-AD' , following jupyter note MR_analysis.ipynb
+author: 'Jennifer x.x.c'
+date: '2026-08-10'
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+```{r}
+#STEP2B-LD clumping
+library(dplyr); library(remotes); library(ieugwasr);library(usethis)
+#edit_r_environ()
+data_path='/Users/apple/Documents/GitHub/personlig-datavitenskapsportef-lje/MR-Dementia/'
+loneliness_gwas=read.csv(file.path(data_path, 'processed/loneliness_candidate_snps.csv'))
+dim(loneliness_gwas)
+head(loneliness_gwas)
+#STEP2C-Instrument selection
+clump_input=loneliness_gwas %>%
+  transmute(
+    rsid=SNP,
+    pval=P_BOLT_LMM,
+    id='loneliness')
+head(clump_input)
+clumped <- ld_clump(
+  dat = clump_input,
+  clump_kb = 10000,
+  clump_r2 = 0.001,
+  clump_p = 5e-8,
+  pop = 'EUR') # 13 independent SNPs  left, 527 variants were removed because they were in LD with stronger variants or were absent from the EUR LD reference panel.
+nrow(clumped)
+clumped
+clumped$rsid
+setwd('/Users/apple/Documents/GitHub/personlig-datavitenskapsportef-lje/MR-Dementia/processed/')
+loneliness_instruments=loneliness_gwas[loneliness_gwas$SNP %in% clumped$rsid,]
+write.csv(loneliness_instruments, 'loneliness_instruments_13SNPs.csv', row.names=FALSE)
+```
+```{r}
+#STEP3a: AD outcome GWAS
+## so far, we have finished: G→Loneliness
+## next, we need to finish: G→AD
+## afterwardsm we can finish: Loneliness→AD
+#STEP3b: Search candidate AD GWAS
+library(TwoSampleMR)
+ao=available_outcomes()
+dim(ao)
+ad_candidates <- ao[grepl('Alzheimer', ao$trait, ignore.case = TRUE),]
+nrow(ad_candidates)
+names(ad_candidates)
+ad_table=ad_candidates[, c('id','trait','author','year','population','ncase','ncontrol','sample_size','study_design','consortium','pmid','note')]
+ad_table=ad_table[order(ad_table$year, decreasing = TRUE),]
+ad_display <- as.data.frame(ad_table[, c('id','trait','author','year','population','ncase','ncontrol','sample_size','study_design','consortium','pmid','note')])
+View(ad_display)
+#### phenoty: Alzheimer's disease/late-onset Alzheimer's disease, exclude: parental history、maternal、paternal、family history、proxy/broad dementia
+#### population: european 
+#### case definition: clinically diagnosed/autopsy-confirmed AD
+#### sample size/cases: as more as better, as the above tow criteria satisfy
+#### data independency 
+#### data quality and usability
+ad_auto <- ad_table[ad_table$population == 'European' & !grepl( 'parent|maternal|paternal|family|proxy|history|dementia', ad_table$trait, ignore.case = TRUE),]
+ad_auto <- ad_auto[order(ad_auto$ncase, decreasing = TRUE, na.last = TRUE),]
+ad_auto[, c('id', 'trait', 'author', 'year','population', 'ncase', 'ncontrol', 'sample_size', 'pmid')]
+View(ad_auto)
+ad_auto2 <- ad_auto[grepl('Alzheimer|late onset',ad_auto$trait,ignore.case = TRUE),]
+View(ad_auto2)
+#STEP3c:  Verify phenotype / ancestry / sample
+#STEP3b: Choose primary outcome
+#STEP3b: Extract the 13 SNPs
+ad_outcome=extract_outcome_data(snps = clumped$rsid, outcomes='ieu-b-2', proxies = FALSE) #Kunkle 2019
+nrow(ad_outcome)
+ad_outcome[, c('SNP', 'beta.outcome', 'se.outcome', 'effect_allele.outcome', 'other_allele.outcome', 'pval.outcome')]
+table(ad_outcome$proxy.outcome)
+View(ad_outcome)
+setdiff(ad_outcome$SNP,clumped$rsid) # 5 SNPs in ad_outcome_direct are not within clumped, check the problem: rsID changed, but chromosome + position same, have to make them matched
+ad_outcome$SNP_original <- ad_outcome$SNP
+loneliness_instruments$key <- paste(loneliness_instruments$CHR, loneliness_instruments$BP,sep = ':')
+ad_outcome$key <- paste(ad_outcome$chr,ad_outcome$pos,sep = ':')
+snp_map <- setNames(loneliness_instruments$SNP,loneliness_instruments$key)
+ad_outcome$SNP <- snp_map[ad_outcome$key]
+setdiff(ad_outcome$SNP,loneliness_instruments$SNP) 
+```
+```{r}
+#STEP4: Harmonisation: to make effect of exposure and outcome towards same allele
+exposure_data <- data.frame(
+  SNP = loneliness_instruments$SNP,
+  beta.exposure = loneliness_instruments$BETA,
+  se.exposure = loneliness_instruments$SE,
+  effect_allele.exposure = loneliness_instruments$ALLELE1,
+  other_allele.exposure = loneliness_instruments$ALLELE0,
+  eaf.exposure = loneliness_instruments$A1FREQ,
+  pval.exposure = loneliness_instruments$P_BOLT_LMM,
+  exposure = 'Loneliness',
+  id.exposure = 'Day2018')
+harmonised <- harmonise_data(exposure_dat = exposure_data, outcome_dat = ad_outcome, action = 2)
+```
+```{r}
+#STEP5: MR
+mr_data <- harmonised[harmonised$mr_keep == TRUE,]
+mr_results <- mr(mr_data)
+mr_results
+##IVW: Inverse variance weighted (IVW), (Beta_SNP->AD)/(Beta_SNP->Loneliness), effect estimate of Loneliness -> AD
+##Weighted median: sensitivity method
+##MR-Egger
+```
+```{r}
+#STEP6: Sensitivity analyses
+mr_or <- generate_odds_ratios(mr_results)
+heterogeneity <- mr_heterogeneity(mr_data)
+pleiotropy <- mr_pleiotropy_test(mr_data)
+loo <- mr_leaveoneout(mr_data) #删掉某一个 SNP 后，总体IVW 会不会大变？
+single <- mr_singlesnp(mr_data) #每一个 SNP 单独给出的 causal estimate 是多少？
+p_scatter <- mr_scatter_plot(mr_results, mr_data)
+```
+#STEP7: Interpretation and reporting
+Primary IVW: 
+OR=0.64, 95%CI=0.1-4.01, P=0.631
+There was no evidence of a causal association between genetically predicted liability to loneliness and clinically diagnosed Alzheimer's disease. However, the estimate was imprecise, with a wide confidence interval.
+Sensitivity results：
+Weighted median：OR=0.52,P=0.593
+Weighted mode：OR=0.27,P=0.470
+Simple mode：OR=0.19,P=0.442
+MR-Egger：OR=1466,P=0.133
+Heterogeneity：Q_IVW=10.60,P=0.389， no evidence of significant heterogeneity.
+MR-Egger intercept：−0.043,P=0.107，no evidence of directional horizontal pleiotropy.
+
+Leave-one-out plot: no single SNP appeared to drive the IVW estimate.
+
+This two-sample MR analysis did not provide evidence that genetically predicted liability to self-reported loneliness causally influences the risk of clinically diagnosed Alzheimer's disease. The primary IVW estimate was imprecise, and sensitivity analyses did not indicate substantial heterogeneity, directional pleiotropy, or dominance by a single genetic instrument.
+The wide confidence intervals indicate limited statistical precision, so the findings should be interpreted as inconclusive rather than evidence for the absence of a causal effect.
+
+

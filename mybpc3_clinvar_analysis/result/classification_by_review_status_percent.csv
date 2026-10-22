@@ -1,0 +1,6 @@
+Classification_group,Expert panel,Single submitter,Conflicting submissions,Missing,"Multiple submitters, not conflicted",No assertation criteria
+Uncertain significance,0.2,53.1,0.0,0.0,45.9,0.8
+Benign / likely benign,0.2,56.8,0.0,0.0,42.5,0.5
+Pathogenic / likely pathogenic,0.4,52.0,0.0,0.0,45.5,2.1
+Conflicting classifications,0.0,0.0,100.0,0.0,0.0,0.0
+Other / not provided,0.0,0.0,0.0,80.0,0.0,20.0

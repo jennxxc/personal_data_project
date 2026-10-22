@@ -1,0 +1,17 @@
+Columns,Data_type,Missing_count,Missing_percentage
+Variation,object,0,0.0
+Genes,object,0,0.0
+Type,object,0,0.0
+Condition,object,2,0.04
+Classification,object,2,0.04
+Review status,object,2,0.04
+Molecular consequence,object,160,3.43
+Protein change,object,1994,42.73
+Germline date last evaluated,object,38,0.81
+Somatic clinical impact date last evaluated,float64,4666,100.0
+Oncogenicity date last evaluated,float64,4666,100.0
+GRCh37 Location,object,0,0.0
+GRCh38 Location,object,0,0.0
+Variation ID,int64,0,0.0
+VCV accession,object,0,0.0
+rs_ID,object,840,18.0

@@ -1,0 +1,71 @@
+# Healthcare Capacity Monitoring in Central Norway
+
+
+## Business Background
+
+Central Norway faces increasing pressure on healthcare services due to population ageing, workforce challenges and geographical differences in healthcare accessibility.
+
+Healthcare organizations need reliable data solutions to monitor whether healthcare resources are aligned with population needs across municipalities.
+
+
+## Project Objective
+
+This project develops a Business Intelligence solution to monitor healthcare capacity in Central Norway.
+
+The solution combines population data and healthcare workforce data to identify municipalities with potential healthcare resource pressure.
+
+
+## Target Users
+
+The dashboard is designed for:
+
+- Healthcare managers
+- Regional healthcare planners
+- Decision-makers in Central Norway healthcare services
+
+
+## Business Questions
+
+
+### 1. Where are healthcare workforce shortages emerging?
+
+Indicators:
+
+- Physicians per 1,000 inhabitants
+- Nurses per 1,000 inhabitants
+- Healthcare workers per 1,000 inhabitants
+
+
+### 2. Which municipalities have increasing healthcare demand?
+
+Indicators:
+
+- Population size
+- Elderly population proportion
+- Population development over time
+
+
+### 3. Which municipalities require attention?
+
+The project develops a healthcare pressure indicator combining:
+
+- Healthcare demand
+- Healthcare workforce availability
+
+
+## Expected Outcome
+
+The final BI solution will provide:
+
+- Regional healthcare capacity overview
+- Municipality comparison
+- Workforce shortage identification
+- Data-driven support for healthcare planning
+
+
+## Tools
+
+- Python: Data cleaning and analysis
+- SQLite: Database
+- SQL: Data modelling and reporting
+- Power BI: Dashboard development

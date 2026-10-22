@@ -1,0 +1,408 @@
+---
+title: '01_import_records'
+output: html_document
+---
+
+```{r setup, message=FALSE, warning=FALSE}
+library(revtools)
+library(synthesisr)
+library(readr)
+library(vroom)
+library(dplyr)
+library(stringr)
+```
+
+```{r file-paths, message=FALSE}
+files = c(
+Pubmed_path='/Users/apple/Documents/GitHub/personlig-datavitenskapsportef-lje/vr-psychosocial-dementia/data/raw/pubmed-DementiaMe-set.nbib',
+Embase_path='/Users/apple/Documents/GitHub/personlig-datavitenskapsportef-lje/vr-psychosocial-dementia/data/raw/embase-DementiaMe-set.ris')
+file.exists(files)
+```
+
+```{r import-records}
+pubmed_records=synthesisr::read_refs(filename = files[['Pubmed_path']],locale = vroom::locale(encoding = 'UTF-8'))
+embase_records=synthesisr::read_refs(filename = files[['Embase_path']],locale=vroom::locale(encoding='UTF-8'))
+nrow(pubmed_records)
+nrow(embase_records)
+pubmed_records$database ='PubMed'
+embase_records$database ='Embase'
+```
+
+```{r}
+# Convert bibliographic fields into consistent character columns
+to_character = function(x) {
+  if (is.list(x)) {
+    vapply(
+      x,
+      function(value) {
+        value = unlist(
+          value,
+          recursive = TRUE,
+          use.names = FALSE
+        )
+        value = value[!is.na(value)]
+        if (length(value) == 0) {
+          NA_character_
+        } else {
+          paste(as.character(value), collapse = '; ')
+        }
+      },
+      character(1)
+    )
+  } else {
+    as.character(x)
+  }
+}
+# Harmonise PubMed fields
+pubmed_prepared = pubmed_records %>% mutate(across(everything(), to_character), database = 'PubMed')
+# Harmonise Embase fields
+embase_prepared = embase_records %>% mutate(across(everything(), to_character),database = 'Embase')
+# Combine the two databases
+records_raw = bind_rows(pubmed_prepared,embase_prepared)
+table(records_raw$database)
+saveRDS(records_raw,'/Users/apple/Documents/GitHub/personlig-datavitenskapsportef-lje/vr-psychosocial-dementia/data/cleaned/records_raw_combined.rds')
+```
+
+```{r}
+#Deduplicate
+names(records_raw)
+records_for_dedup=records_raw %>% mutate(record_id=row_number(), doi_clean=str_extract(str_to_lower(doi), '10\\.\\d{4,9}/[-._;()/:a-z0-9]+'),
+pmid_clean=str_extract(pubmed_id, '\\d+'),
+title_clean=title %>% str_to_lower() %>% str_replace_all('[^[:alnum:] ]', '') %>% str_squish(),
+year_clean=str_extract(year, '\\d{4}')) %>% mutate(across(c(doi_clean, pmid_clean, title_clean, year_clean), ~na_if(.x, '')))
+data.frame(field=c('DOI', 'PMID', 'Title','Year'), available=c(
+  sum(!is.na(records_for_dedup$doi_clean)),
+  sum(!is.na(records_for_dedup$pmid_clean)),
+  sum(!is.na(records_for_dedup$title_clean)),
+  sum(!is.na(records_for_dedup$year_clean))),
+  missing=c(
+    sum(is.na(records_for_dedup$doi_clean)),
+    sum(is.na(records_for_dedup$pmid_clean)),
+    sum(is.na(records_for_dedup$title_clean)),
+    sum(is.na(records_for_dedup$year_clean))))
+duplicate_summary=data.frame(
+  match_field=c('DOI', 'PMID', 'Title'),
+  duplicate_grouos=c(
+    sum(table(records_for_dedup$doi_clean)>1),
+    sum(table(records_for_dedup$pmid_clean)>1),
+    sum(table(records_for_dedup$title_clean)>1)))
+duplicate_summary
+```
+
+```{r}
+#record duplicates 
+title_duplicate_groups=records_for_dedup %>% 
+  filter(!is.na(title_clean)) %>% 
+  group_by(title_clean) %>%
+  filter(n()>1) %>% 
+  summarise(
+    title=first(title),
+    n_records=n(),
+    databases=paste(sort(unique(database)),
+    collapse='+'),
+    years=paste(sort(unique(na.omit(year_clean))), 
+    collapse = ';'),
+    .groups='drop')
+title_duplicate_overview=title_duplicate_groups %>% summarise(
+  duplciate_group=n(),
+  records_in_duplicate_groups=sum(n_records),
+  potential_records_to_remove=sum(n_records-1),
+  cross_database_groups=sum(str_detect(databases, 'PubMed') & str_detect(databases, 'Embase')))
+title_duplicate_overview
+```
+```{r}
+#remove duplicate
+n_raw=nrow(records_for_dedup)
+records_after_doi=deduplicate(
+  data=records_for_dedup,
+  match_by = 'doi_clean',
+  method='exact',
+  type='merge')
+n_after_doi=nrow(records_after_doi)
+
+records_after_pmid=deduplicate(
+  data=records_after_doi,
+  match_by = 'pmi_clean',
+  method='exact',
+  type='merge')
+n_after_pmid=nrow(records_after_pmid)
+records_after_pmid=records_after_pmid %>% mutate(
+  title_match=if_else(!is.na(title_clean) & nchar(title_clean) >=20, 
+  title_clean,
+  paste0('unique_titl_', row_number())))
+
+records_deduplicated=deduplicate(
+  data=records_after_pmid,
+  match_by = 'title_match', 
+  method='exact',
+  type='merge')
+n_after_title=nrow(records_deduplicated)
+```
+```{r}
+#summary
+deduplication_summary <- data.frame(
+  stage = c(
+    'Before deduplication',
+    'After DOI matching',
+    'After PMID matching',
+    'After exact-title matching'),
+  records_remaining = c(
+    n_raw,
+    n_after_doi,
+    n_after_pmid,
+    n_after_title),
+  records_removed_at_stage = c(
+    0,
+    n_raw - n_after_doi,
+    n_after_doi - n_after_pmid,
+    n_after_pmid - n_after_title))
+deduplication_summary
+```
+```{r}
+#save results
+saveRDS(records_deduplicated,
+'/Users/apple/Documents/GitHub/personlig-datavitenskapsportef-lje/vr-psychosocial-dementia/data/cleaned/records_deduplicated.rds')
+write.csv(deduplication_summary,
+'/Users/apple/Documents/GitHub/personlig-datavitenskapsportef-lje/vr-psychosocial-dementia/data/cleaned/deduplication_summary.csv', row.names = FALSE)
+write.csv(title_duplicate_groups, '/Users/apple/Documents/GitHub/personlig-datavitenskapsportef-lje/vr-psychosocial-dementia/data/cleaned/title_duplicate_groups.csv', row.names = FALSE)
+```
+```{r}
+#title and abstract screen
+screening_data <- records_deduplicated %>%
+  mutate(
+    screening_id = sprintf(
+      'VRD%04d',
+      row_number()
+    ),
+    title = str_squish(title),
+    abstract = str_squish(abstract),
+    title_abstract = str_c(
+      coalesce(title, ''),
+      coalesce(abstract, ''),
+      sep = ' '
+    ),
+    # Used only to prioritise screening, not automatic exclusion
+    psychosocial_priority = str_detect(
+      title_abstract,
+      regex(
+        paste(
+          c(
+            'psychosocial',
+            'social',
+            'reminisc',
+            'well-being',
+            'wellbeing',
+            'quality of life',
+            'depress',
+            'anxi',
+            'apathy',
+            'agitat',
+            'affect',
+            'mood',
+            'loneliness',
+            'interaction',
+            'communication',
+            'engagement',
+            'withdrawal'
+          ),
+          collapse = '|'
+        ),
+        ignore_case = TRUE
+      )
+    ),
+    screening_decision = NA_character_,
+    exclusion_reason = NA_character_,
+    screening_notes = NA_character_
+  ) %>%
+  arrange(
+    desc(psychosocial_priority),
+    title
+  ) %>%
+  select(
+    screening_id,
+    database,
+    title,
+    abstract,
+    author,
+    year,
+    journal,
+    publication_type,
+    doi_clean,
+    pmid_clean,
+    psychosocial_priority,
+    screening_decision,
+    exclusion_reason,
+    screening_notes
+  )
+nrow(screening_data)
+table(
+  screening_data$psychosocial_priority,
+  useNA = 'ifany'
+)
+sum(is.na(screening_data$abstract))
+saveRDS(screening_data,'/Users/apple/Documents/GitHub/personlig-datavitenskapsportef-lje/vr-psychosocial-dementia/data/cleaned/screening_data.rds')
+write.csv(screening_data,'/Users/apple/Documents/GitHub/personlig-datavitenskapsportef-lje/vr-psychosocial-dementia/data/cleaned/screening_data.csv',row.names = FALSE, fileEncoding = 'UTF-8')
+```
+```{r}
+#open file and check 
+screening_data_sub=screening_data %>% mutate(label=paste0(screening_id, '|', coalesce(title, 'No title')),
+screened_abstracts=NA_character_, 
+note='') %>% select(label, everything()) %>% as.data.frame()
+nrow(screening_data_sub)
+length(screening_data_sub$label)
+anyDuplicated(screening_data_sub$label)
+screening_result=screen_abstracts(screening_data_sub)
+```
+```{r}
+# 
+screening <- read_csv(
+  '/Users/apple/Documents/GitHub/personlig-datavitenskapsportef-lje/vr-psychosocial-dementia/data/processed/vr_dementia_title_abstract_screening_assisted.csv',
+  show_col_types = FALSE
+)
+# 
+candidate_base <- screening %>%
+  filter(suggested_decision %in% c('selected', 'uncertain')) %>%
+  mutate(
+    text = str_to_lower(
+      str_c(
+        coalesce(title, ''),
+        coalesce(abstract, ''),
+        sep = ' '
+      )
+    ),
+    # 
+    study_key = if_else(
+      !is.na(possible_report_family) &
+        possible_report_family != '',
+      possible_report_family,
+      screening_id
+    ),
+    design_group = case_when(
+      str_detect(text, 'cross[- ]?over|crossover') &
+        str_detect(text, 'random') ~ 'randomized_crossover',
+
+      str_detect(text, 'randomi[sz]|\\brct\\b') ~
+        'randomized_parallel_or_unclear',
+
+      str_detect(text, 'controlled trial|control group|comparator') ~
+        'nonrandomized_controlled',
+
+      str_detect(text, 'single[- ]arm|pre[- ]?post|pilot|feasibility') ~
+        'single_arm_or_pilot',
+
+      TRUE ~ 'unclear'
+    ),
+    # intervention type
+    reminiscence = str_detect(
+      text,
+      'reminisc|autobiograph|nostalgi|life stor'
+    ),
+    nature_relaxation = str_detect(
+      text,
+      'nature|forest|garden|beach|landscape|relax|calm'
+    ),
+    social_dyadic = str_detect(
+      text,
+      'dyad|caregiver|family|social interact|interpersonal|multi-user'
+    )
+  ) %>%
+  mutate(
+    other_vr = !reminiscence &
+      !nature_relaxation &
+      !social_dyadic
+  )
+# 
+candidate_interventions <- candidate_base %>%
+  pivot_longer(
+    cols = c(
+      reminiscence,
+      nature_relaxation,
+      social_dyadic,
+      other_vr
+    ),
+    names_to = 'intervention_group',
+    values_to = 'has_intervention'
+  ) %>%
+  filter(has_intervention)
+# 
+meta_candidates <- candidate_interventions %>%
+  mutate(
+    engagement = str_detect(
+      text,
+      'engagement|participation'
+    ),
+    apathy = str_detect(
+      text,
+      'apathy|apathetic'
+    ),
+    agitation_aggression = str_detect(
+      text,
+      'agitat|aggress|\\bbpsd\\b|neuropsychiatric'
+    ),
+    depression_anxiety_mood = str_detect(
+      text,
+      'depress|anxi|mood|affect|emotion'
+    ),
+    quality_of_life = str_detect(
+      text,
+      'quality of life|\\bqol\\b|well-being|wellbeing'
+    ),
+    social_outcomes = str_detect(
+      text,
+      paste0(
+        'social engagement|social interaction|',
+        'loneliness|social isolation|conversation|communication'
+      )
+    )
+  ) %>%
+  pivot_longer(
+    cols = c(
+      engagement,
+      apathy,
+      agitation_aggression,
+      depression_anxiety_mood,
+      quality_of_life,
+      social_outcomes
+    ),
+    names_to = 'outcome_group',
+    values_to = 'has_outcome'
+  ) %>%
+  filter(has_outcome) %>%
+  #
+  filter(
+    design_group %in% c(
+      'randomized_crossover',
+      'randomized_parallel_or_unclear',
+      'nonrandomized_controlled'
+    )
+  ) %>%
+  #
+  distinct(
+    study_key,
+    intervention_group,
+    outcome_group,
+    .keep_all = TRUE
+  )
+#
+meta_groups <- meta_candidates %>%
+  group_by(intervention_group, outcome_group) %>%
+  summarise(
+    n_independent_studies = n_distinct(study_key),
+    designs = str_c(
+      sort(unique(design_group)),
+      collapse = '; '
+    ),
+    screening_ids = str_c(
+      sort(unique(screening_id)),
+      collapse = '; '
+    ),
+    .groups = 'drop'
+  ) %>%
+  filter(n_independent_studies >= 2) %>%
+  arrange(desc(n_independent_studies))
+meta_groups
+write_csv(meta_groups,'procssed/potential_meta_groups.csv')
+```
+
+## R Markdown
+This document imports bibliographic records retrieved from PubMed, Embase and PsycINFO and combines them into a single dataset prior to deduplication.

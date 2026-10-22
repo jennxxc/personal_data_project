@@ -1,0 +1,352 @@
+Provider: American Psychological Association
+Database: PsycINFO
+Content: application/x-research-info-systems
+
+TY  - JOUR
+DESCRIPTORS  - *Geometry;  *Neuroimaging;  *Spatial Ability;  *Task Complexity;  *Virtual Reality; Environment; Goals; Memory
+PMID  - 30346212
+ID  - 2018-52931-001
+T1  - Neurofunctional correlates of geometry and feature use in a virtual environment.
+JF  - Journal of Experimental Psychology: Learning, Memory, and Cognition
+A1  - Forloines, Martha R.
+A1  - Reid, Meredith A.
+A1  - Thompkins, Andie M.
+A1  - Robinson, Jennifer L.
+A1  - Katz, Jeffrey S.
+VL  - 45
+IS  - 8
+SP  - 1347
+EP  - 1363
+Y1  - 2019
+CY  - US
+AD  - Forloines, Martha R.: Neurology, University of California, Davis, UC Davis Alzheimer’s Disease Center, 860 Y Street, Suite 3900, Sacramento, CA, US, 95817, mrforloines@ucdavis.edu
+PB  - American Psychological Association
+SN  - 1939-1285(Electronic),0278-7393(Print)
+N2  - There are mixed results regarding the differentiation of neurofunctional correlates of spatial abilities. Previous studies employed complex environments or alternate memory tasks which could potentially add to inconsistencies across studies of navigation. To help elucidate the existing mixed findings, we conducted a study in a simplistic environment without a supplemental memory task in order to examine navigationally relevant neural function using fMRI. Participants completed a virtual navigation task where they learned the relationship between landmarks, environmental features, and a goal. The goal was a distinct landmark, or feature, consistently situated in one corner, or a geometric cue, of a rectangular room. Test trials varied the relationship of featural and geometric cues allowing insight into navigational strategies when using these cues and when the cues are in conflict. Behavioral results showed participants learned the task rapidly and utilized both landmark feature-based and environmental geometry-based strategies to locate the goal; preferring the feature-based strategy. Neuroimaging results provided evidence for activation in navigationally relevant regions, including the parahippocampus, caudate, and retrosplenial cortex. These results demonstrate the importance of these structures and their relation to environmental geometry and feature use while navigating an enclosed simplistic environment. The results provide clarification regarding the role of the parahippocampus and caudate when using geometric- or landmark-based strategies and demonstrate the prerequisite of environmental novelty to elicit hippocampal activation. (PsycInfo Database Record (c) 2025 APA, all rights reserved)
+KW  - *Geometry
+KW  - *Neuroimaging
+KW  - *Spatial Ability
+KW  - *Task Complexity
+KW  - *Virtual Reality
+KW  - Environment
+KW  - Goals
+KW  - Memory
+M3  - doi:10.1037/xlm0000656
+DO  - 10.1037/xlm0000656
+ER  -
+TY  - JOUR
+DESCRIPTORS  - *Computers;  *Egocentrism;  *Learning;  *Allocentrism;  *Navigation Technology; Virtual Environment
+PMID  - 41343385
+ID  - 2026-96264-001
+T1  - Unreliable landmarks disrupt egocentric navigation in desktop virtual environments.
+JF  - Journal of Experimental Psychology: Learning, Memory, and Cognition
+A1  - Baxter, Rory
+A1  - Smith, Alastair D.
+VL  - 52
+IS  - 5
+SP  - 760
+EP  - 782
+Y1  - 2026
+CY  - US
+AD  - Baxter, Rory: Centre for Health Technology, University of Plymouth, Drake Circus, Plymouth, United Kingdom, PL4 8AA, rory.baxter@plymouth.ac.uk
+PB  - American Psychological Association
+SN  - 1939-1285(Electronic),0278-7393(Print)
+N2  - Navigation relies on the integration of both allocentric (world-centered) and egocentric (navigator-centered) spatial cues. An influential real-world navigational task dissociated allocentric place learning from egocentric path integration, highlighting the decline in allocentric cue use associated with cognitive aging. This report describes a novel computer-based replication of this task, designed as a remote test of navigational ability, that also addresses potential confounds in the original task, including tighter control of spatial cue competition. In Experiment 1a, participants learned a location signaled either by landmark cues in the absence of a stable starting position (allocentric), distance and direction from the starting position in the absence of landmarks (egocentric), or a combination of the two (control). In the allocentric condition, participants exhibited lower accuracy, greater reorientation, and more complex paths compared to the control and egocentric conditions. Experiment 1b employed the same design but featured an egocentric condition with unstable landmarks that did not predict the target location. In Experiment 1b, egocentric condition accuracy was equivalent to the allocentric condition and lower compared to Experiment 1a’s egocentric condition. Additionally, in Experiment 1b’s egocentric condition, participants took more complex paths and reoriented more to the unstable landmarks. Experiments 2a and 2b replicated findings from Experiments 1a and 1b, indicating their reliability. These data suggest that path complexity is associated with navigational error and underscore the benefits of integrating different sources of information during navigation. Cross-experiment comparisons also show how the presence of unstable visual cues can lead to the adoption of unsuitable strategic approaches. (PsycInfo Database Record (c) 2026 APA, all rights reserved)
+KW  - *Computers
+KW  - *Egocentrism
+KW  - *Learning
+KW  - *Allocentrism
+KW  - *Navigation Technology
+KW  - Virtual Environment
+M3  - doi:10.1037/xlm0001512
+DO  - 10.1037/xlm0001512
+ER  -
+TY  - JOUR
+DESCRIPTORS  - *Alzheimer's Disease;  *Cognitive Rehabilitation;  *Brain Training; Stimulation
+PMID  - 30080079
+ID  - 2018-37728-001
+T1  - Differential effects of cognition-focused interventions for people with Alzheimer’s disease: A meta-analysis.
+JF  - Neuropsychology
+A1  - Oltra-Cucarella, Javier
+A1  - Ferrer-Cascales, Rosario
+A1  - Clare, Linda
+A1  - Morris, Scott B.
+A1  - Espert, Raul
+A1  - Tirapu, Javier
+A1  - Sánchez-SanSegundo, Miriam
+VL  - 32
+IS  - 6
+SP  - 664
+EP  - 679
+Y1  - 2018
+CY  - US
+AD  - Sánchez-SanSegundo, Miriam: Department of Health Psychology, University of Alicante, Campus de San Vicente del Raspeig, Alicante, Spain, 03690, miriam.sanchez@ua.es
+PB  - American Psychological Association
+SN  - 1931-1559(Electronic),0894-4105(Print)
+N2  - Objective: The efficacy of cognition-focused interventions (CFIs) for the treatment of Alzheimer’s disease (AD) has been questioned recently. To date, the specific effects of cognitive rehabilitation (CR), cognitive training (CT), and cognitive stimulation [CS] have not been analyzed due to inconsistencies in the use of the comparison groups. This work aims to analyze the differential effects of CFIs by removing the influence of the comparison group from the estimates of the effects. Method: a literature search performed in Pubmed, Proquest, and Embase databases yielded 65 potential studies, of which 33 studies with a sample size of 1,225 individuals were meta-analyzed. Each intervention group was treated as the unit of analysis to remove the confounding effects of the comparison condition. Measures of general cognitive functioning, memory and functional outcomes were compared using the hierarchical robust variance estimator metaregression. Age, education, sex, risk of bias, sample size, duration of intervention, the proportion of drop-outs, pharmacological treatment, and severity of disease were included as covariates. Results: Only CT differed from no cognition-focused interventions (NCFI) for memory outcomes in univariate analyses, but differences became nonsignificant when covariates were included in the model. CR showed a significantly higher effect in outcomes measuring functioning in targeted domains with no differences in standard cognitive tests relative to NCFI. Conclusions: This work supports previous findings questioning the efficacy of CT or CS for AD. Moving toward CFIs focused on relevant goals and including measures related to the skills, abilities or activities that are the focus of the intervention is encouraged. (PsycInfo Database Record (c) 2025 APA, all rights reserved)
+KW  - *Alzheimer's Disease
+KW  - *Cognitive Rehabilitation
+KW  - *Brain Training
+KW  - Stimulation
+M3  - doi:10.1037/neu0000449
+DO  - 10.1037/neu0000449
+ER  -
+TY  - JOUR
+DESCRIPTORS  - *Aging;  *Episodic Memory;  *Virtual Reality; Human Information Storage; Receptor Binding
+PMID  - 20438215
+ID  - 2010-07896-010
+T1  - Age effect on components of episodic memory and feature binding: A virtual reality study.
+JF  - Neuropsychology
+A1  - Plancher, Gaën
+A1  - Gyselinck, Valerie
+A1  - Nicolas, Serge
+A1  - Piolino, Pascale
+VL  - 24
+IS  - 3
+SP  - 379
+EP  - 390
+Y1  - 2010
+CY  - US
+AD  - Piolino, Pascale: Laboratoire Psychologie et Neurosciences Cognitives, CNRS UMR 8189, Groupe Memoire et Apprentissage, Universite Paris Descartes, 71 avenue E. Vaillant, Boulogne Billancourt, France, 92774 Cedex, pascale.piolino@parisdescartes.fr
+PB  - American Psychological Association
+SN  - 1931-1559(Electronic),0894-4105(Print)
+N2  - Objective: The aims were (1) to explore the effects of normal aging on the main aspects of episodic memory—what, where, and when,—and on feature binding in a virtual environment; (2) to explore the influence of the mode of learning, intentional versus incidental; and (3) to benchmark virtual environment findings collected with older adults against data recorded in classical neuropsychological tests. Method: We tested a population of 82 young adults and 78 older adults without dementia (they participated in a short battery of neuropsychological tests). All the participants drove a car in an urban virtual environment composing of 9 turns and specific areas. Half of the participants were told to drive through the virtual town; the other half were asked to drive and to memorize the environment (itinerary, elements, etc.). All aspects of episodic memory were then assessed (what, where, when, and binding). Results: The older participants had less recollection of the spatiotemporal context of events than the younger with intentional encoding (p p pp < .01). Conclusion: We view these results as an indication that virtual environments could provide helpful standard tools for assessing age effects on the main aspects of episodic memory. (PsycInfo Database Record (c) 2025 APA, all rights reserved)
+KW  - *Aging
+KW  - *Episodic Memory
+KW  - *Virtual Reality
+KW  - Human Information Storage
+KW  - Receptor Binding
+M3  - doi:10.1037/a0018680
+DO  - 10.1037/a0018680
+ER  -
+TY  - JOUR
+DESCRIPTORS  - *Subtests;  *Test Standardization;  *Test Validity;  *Visual Perception;  *Wechsler Memory Scale; Alzheimer's Disease; Cerebrovascular Accidents; Head Injuries; Recall (Learning)
+ID  - 1991-14246-001
+T1  - The Visual Reproduction subtest: Standardization and clinical validation of a delayed recall procedure.
+JF  - Neuropsychology
+A1  - Trahan, Donald E.
+A1  - Quintana, Joseph W.
+A1  - Willingham, Alex C.
+A1  - Goethe, Katherine E.
+VL  - 2
+IS  - 1
+SP  - 29
+EP  - 39
+Y1  - 1988
+CY  - United Kingdom
+PB  - Taylor & Francis
+SN  - 1931-1559(Electronic),0894-4105(Print)
+N2  - Provided a normative database for a delayed recall procedure using the Visual Reproduction subtest from Form I of the Wechsler Memory Scale and examined the test's clinical sensitivity in 4 groups of patients. Normative data were based on 255 neurologically normal adults (aged 18–91 yrs). Clinical groups included 103 patients with severe head trauma, left hemisphere cerebrovascular accident (CVA), right hemisphere CVA, and Alzheimer's disease (mean ages 28.85, 63.46, 64.21, and 64.85 yrs, respectively). Normative data revealed significant age-related differences, with older Ss performing lower on both immediate and delayed recall tasks. Ss in all 4 clinical groups performed significantly below age-matched controls. Visual Reproduction scores correlated positively with measures of visual-spatial ability, verbal memory, and visual memory. (PsycInfo Database Record (c) 2025 APA, all rights reserved)
+KW  - *Subtests
+KW  - *Test Standardization
+KW  - *Test Validity
+KW  - *Visual Perception
+KW  - *Wechsler Memory Scale
+KW  - Alzheimer's Disease
+KW  - Cerebrovascular Accidents
+KW  - Head Injuries
+KW  - Recall (Learning)
+M3  - doi:10.1037/h0091754
+DO  - 10.1037/h0091754
+ER  -
+TY  - JOUR
+DESCRIPTORS  - *Aging;  *Episodic Memory;  *Memory Decay;  *Virtual Reality; Test Construction
+PMID  - 29878838
+ID  - 2018-25395-001
+T1  - Ecologically relevant episodic memory assessment indicates an attenuated age-related memory loss – A virtual reality study.
+JF  - Neuropsychology
+A1  - Pflueger, Marlon O.
+A1  - Stieglitz, Rolf-Dieter
+A1  - Lemoine, Patrick
+A1  - Leyhe, Thomas
+VL  - 32
+IS  - 6
+SP  - 680
+EP  - 689
+Y1  - 2018
+CY  - US
+AD  - Pflueger, Marlon O.: Department of Forensic Psychiatry, Psychiatric University Hospital, Wilhelm Klein Strasse 27, Basel, Switzerland, 4012, marlon.pflueger@upkbs.ch
+PB  - American Psychological Association
+SN  - 1931-1559(Electronic),0894-4105(Print)
+N2  - Objectives: Since the advent of imaging techniques, the role of the neuropsychological assessment has changed. Questions concerning everyday functionality became primarily important and, thus, ecologically valid neuropsychological assessments are mandatory. Virtual reality (VR) environments might provide a way of implementing immersive cognitive assessments with a higher degree of everyday-life-related cognitive demands. Method: We report on a VR-based episodic memory examination in N = 30 young and N = 18 healthy older adults (HOA) using a kitchen scene. The test procedure was designed to be structurally comparable to clinically used California Verbal Learning Test (CVLT) in terms of repeated learning trials as well as short and long delayed recall measures. Results: The results showed that age-related learning and performance decrements were mainly evident in the CVLT but not in the VR-memory examination. Conclusions: The ecologically valid VR-memory examination might provide a more accurate “age-fair” estimation of everyday-life-related memory demands in HOA than the frequently and clinically used CVLT. We concluded this from our finding of context-related automatic and effortless activations of deeply experience based encoding and retrieval strategies with regard to everyday-life-related objects in the HOA, which might not be paralleled by learning arbitrary word associations. (PsycInfo Database Record (c) 2025 APA, all rights reserved)
+KW  - *Aging
+KW  - *Episodic Memory
+KW  - *Memory Decay
+KW  - *Virtual Reality
+KW  - Test Construction
+M3  - doi:10.1037/neu0000454
+DO  - 10.1037/neu0000454
+ER  -
+TY  - JOUR
+DESCRIPTORS  - *Age Differences;  *Egocentrism;  *Human Information Storage;  *Motor Processes;  *Spatial Memory;  *Virtual Reality;  *Emerging Adulthood; Older Adulthood
+PMID  - 40788702
+ID  - 2026-49436-001
+T1  - Continuous updating via self-motion compensates for weak allocentric spatial memory in aging.
+JF  - Psychology and Aging
+A1  - Castegnaro, Andrea
+A1  - Dior, Alexander
+A1  - Burgess, Neil
+A1  - King, John
+VL  - 40
+IS  - 8
+SP  - 890
+EP  - 901
+Y1  - 2025
+CY  - US
+AD  - Castegnaro, Andrea: Institute of Cognitive Neuroscience, University College London, Alexandra House, 17–19 Queen Square, London, United Kingdom, WC1N 3AZ, andrea.castegnaro.15@ucl.ac.uk
+PB  - American Psychological Association
+SN  - 1939-1498(Electronic),0882-7974(Print)
+N2  - Navigational skills are essential for interacting with our environment, supported by multiple types of spatial representations. We investigated age-related differences in spatial memory using a virtual reality task that manipulated viewpoints between the encoding and retrieval of one or four-object locations. The task investigates compensatory mechanisms in aging, specifically how spatial updating via self-motion affects spatial memory. We tested 21 young adults (ages 19–36) and 23 older adults (ages 63–80). The task involved three movement conditions: same-viewpoint condition, where participants walked away and returned to the same viewpoint; shifted-viewpoint (walking) condition where participants walked to a different viewpoint, enabling continuous updates of their egocentric representations through self-motion; and shifted-viewpoint (teleport) condition where participants teleported to the other viewpoint, involving both a virtual translation and rotation of the participant’s view. Retrieval was tested by asking participants to place each object at its previously seen location. Average displacement error was affected by age group, object configuration, and movement condition, with an interaction between age and movement condition. Differences in movement conditions were primarily driven by older participants, who were most accurate from the same viewpoint. In shifted-viewpoint conditions, teleportation—where self-motion cues were absent—led to significantly greater errors than walking in the older group. Our results highlight the role of spatial updating in supporting spatial memory and suggest that age-related decline in allocentric representations can be mitigated by continuous updating of egocentric representations by self-motion. We speculate that the use of spatial updating might be impaired early in the progression to Alzheimer’s dementia due to entorhinal cortical pathology. (PsycInfo Database Record (c) 2025 APA, all rights reserved)
+KW  - *Age Differences
+KW  - *Egocentrism
+KW  - *Human Information Storage
+KW  - *Motor Processes
+KW  - *Spatial Memory
+KW  - *Virtual Reality
+KW  - *Emerging Adulthood
+KW  - Older Adulthood
+M3  - doi:10.1037/pag0000926
+DO  - 10.1037/pag0000926
+ER  -
+TY  - JOUR
+DESCRIPTORS  - *Psychological Assessment;  *Virtual Reality; Intervention; Neuropsychological Assessment; Neuropsychology; Technology
+ID  - 2016-40085-001
+T1  - Virtual reality for psychological assessment in clinical practice.
+JF  - Practice Innovations
+A1  - Parsons, Thomas D.
+A1  - Phillips, Amanda S.
+VL  - 1
+IS  - 3
+SP  - 197
+EP  - 217
+Y1  - 2016
+CY  - US
+AD  - Parsons, Thomas D.: Computational Neuropsychology and Simulation Lab, National Academy of Neuropsychology, Department of Psychology, University of North Texas, 1155 Union Circle #311280, Denton, TX, US, 76203, thomas.parsons@unt.edu
+PB  - Educational Publishing Foundation
+SN  - 2377-8903(Electronic),2377-889X(Print)
+N2  - Clinical psychologists are often asked to make recommendations regarding a client’s ability to function in everyday activities (e.g., work, classroom, or shopping). Common approaches include a combination of paper-and-pencil (including some computer automated) assessments, behavioral observations of the client’s performance during testing, and self-report measures about their perceived deficits. From this combination of assessments, observations, and self-reports, the psychologist is expected to make predictions about the client’s ability to return to the classroom, return to work, and successfully complete other activities of daily living. While there are advantages to this approach, there are also some shortcomings—perhaps most notable is the lack of ecological validity. Recent advances in virtual reality technologies allow for enhanced computational capacities for administration efficiency, stimulus presentation, automated logging of responses, and data analytic processing. These virtual environments allow for controlled presentations of emotionally engaging background narratives to enhance affective experience and social interactions. Within this context virtual reality can allow psychologists to offer safe, repeatable, and diversifiable assessments of real word functioning. Although there are a number of purported advantages of virtual reality technologies, there is still a need for establishing the psychometric properties of virtual reality assessments and interventions. This review investigates the advantages and challenges inherent in the application of virtual reality technologies to psychological assessments and interventions. (PsycInfo Database Record (c) 2025 APA, all rights reserved)
+KW  - *Psychological Assessment
+KW  - *Virtual Reality
+KW  - Intervention
+KW  - Neuropsychological Assessment
+KW  - Neuropsychology
+KW  - Technology
+M3  - doi:10.1037/pri0000028
+DO  - 10.1037/pri0000028
+ER  -
+TY  - JOUR
+DESCRIPTORS  - *Aging;  *Egocentrism;  *Preferences;  *Strategies;  *Wayfinding;  *Allocentrism;  *Spatial Navigation; Older Adulthood
+PMID  - 40875345
+ID  - 2026-56403-001
+T1  - Age differences in spatial navigation stem from a preference for familiar routes rather than impaired landmark-dependent strategies.
+JF  - Psychology and Aging
+A1  - Hill, Paul F.
+A1  - Bermudez, Skyelynn
+A1  - Garren, Joshua D.
+A1  - McAvan, Andrew S.
+A1  - Zheng, Jingyi
+A1  - Barnes, Carol A.
+A1  - Ekstrom, Arne D.
+VL  - 40
+IS  - 8
+SP  - 913
+EP  - 928
+Y1  - 2025
+CY  - US
+AD  - Hill, Paul F.: Department of Psychology, University of Arizona, 1503 East University Boulevard, Tucson, AZ, US, 85721, paulhill@arizona.edu
+PB  - American Psychological Association
+SN  - 1939-1498(Electronic),0882-7974(Print)
+N2  - A leading hypothesis in the field of aging and navigation is that older adults are selectively impaired on tasks that require allocentric (landmark-based) strategies to navigate, resulting in a shift toward more egocentric (self-based) strategies. However, most evidence in humans comes from studies that restrict body-based sensorimotor cues that are essential to both egocentric and allocentric navigation. In the present study, young and older adults navigated a virtual environment in each of two conditions: a stationary desktop condition that relied on visual input and an immersive condition that enabled unrestricted ambulation and sensorimotor feedback during navigation. Both age groups performed worse when initially learning locations from novel compared with familiar locations—often considered a hallmark of allocentric navigation. The cost of switching from familiar to novel start locations was equal between age groups, pointing to a null effect of age on allocentric strategies. Older adults also employed distal landmarks to a comparable extent to young adults, suggesting that landmark-dependent strategies did not differ by age. However, older adults were more likely to replicate previously taken paths, potentially indicative of a preference for egocentric strategies. The path replication effect was significantly attenuated in the immersive condition, particularly in the presence of geometric boundary cues that could be used to infer distance. Age differences in spatial navigation may therefore be driven in part by a selective bias for navigating familiar routes, although these differences were lessened in the presence of multimodal visual and sensorimotor cues. The present study highlights that navigation is a complex cognitive construct that draws on multiple parallel systems and strategies that cannot be easily explained by a simple allocentric–egocentric dichotomy. (PsycInfo Database Record (c) 2025 APA, all rights reserved)
+KW  - *Aging
+KW  - *Egocentrism
+KW  - *Preferences
+KW  - *Strategies
+KW  - *Wayfinding
+KW  - *Allocentrism
+KW  - *Spatial Navigation
+KW  - Older Adulthood
+M3  - doi:10.1037/pag0000927
+DO  - 10.1037/pag0000927
+ER  -
+TY  - JOUR
+DESCRIPTORS  - *Alzheimer's Disease;  *Spatial Memory;  *Spatial Perception;  *Virtual Reality;  *Spatial Navigation; Cognitive Impairment; Cues; Mild Cognitive Impairment
+PMID  - 29809030
+ID  - 2018-24118-002
+T1  - Are visual cues helpful for virtual spatial navigation and spatial memory in patients with mild cognitive impairment or Alzheimer’s disease?
+JF  - Neuropsychology
+A1  - Cogné, Mélanie
+A1  - Auriacombe, Sophie
+A1  - Vasa, Louise
+A1  - Tison, François
+A1  - Klinger, Evelyne
+A1  - Sauzéon, Hélène
+A1  - Joseph, Pierre-Alain
+A1  - N′Kaoua, Bernard
+VL  - 32
+IS  - 4
+SP  - 385
+EP  - 400
+Y1  - 2018
+CY  - US
+AD  - Cogné, Mélanie: Rehabilitation Unit, Raymond Poincaré Hospital, Garches, France, 92380, melanie.cogne@chu-bordeaux.fr
+PB  - American Psychological Association
+SN  - 1931-1559(Electronic),0894-4105(Print)
+N2  - Objective: To evaluate whether visual cues are helpful for virtual spatial navigation and memory in Alzheimer’s disease (AD) and patients with mild cognitive impairment (MCI). Method: 20 patients with AD, 18 patients with MCI and 20 age-matched healthy controls (HC) were included. Participants had to actively reproduce a path that included 5 intersections with one landmark at each intersection that they had seen previously during a learning phase. Three cueing conditions for navigation were offered: salient landmarks, directional arrows and a map. A path without additional visual stimuli served as control condition. Navigation time and number of trajectory mistakes were recorded. Results: With the presence of directional arrows, no significant difference was found between groups concerning the number of trajectory mistakes and navigation time. The number of trajectory mistakes did not differ significantly between patients with AD and patients with MCI on the path with arrows, the path with salient landmarks and the path with a map. There were significant correlations between the number of trajectory mistakes under the arrow condition and executive tests, and between the number of trajectory mistakes under the salient landmark condition and memory tests. Conclusion: Visual cueing such as directional arrows and salient landmarks appears helpful for spatial navigation and memory tasks in patients with AD and patients with MCI. This study opens new research avenues for neuro-rehabilitation, such as the use of augmented reality in real-life settings to support the navigational capabilities of patients with MCI and patients with AD. (PsycInfo Database Record (c) 2025 APA, all rights reserved)
+KW  - *Alzheimer's Disease
+KW  - *Spatial Memory
+KW  - *Spatial Perception
+KW  - *Virtual Reality
+KW  - *Spatial Navigation
+KW  - Cognitive Impairment
+KW  - Cues
+KW  - Mild Cognitive Impairment
+M3  - doi:10.1037/neu0000435
+DO  - 10.1037/neu0000435
+ER  -
+TY  - JOUR
+DESCRIPTORS  - *Cognitive Assessment;  *Confirmatory Factor Analysis;  *Error of Measurement;  *Heart;  *Item Response Theory; Mini Mental State Examination
+PMID  - 37276135
+ID  - 2023-76851-003
+T1  - Ceiling effects and differential measurement precision across calibrated cognitive scores in the Framingham Study.
+JF  - Neuropsychology
+A1  - Scollard, Phoebe
+A1  - Choi, Seo-Eun
+A1  - Lee, Michael L.
+A1  - Mukherjee, Shubhabrata
+A1  - Trittschuh, Emily H.
+A1  - Sanders, R. Elizabeth
+A1  - Gibbons, Laura E.
+A1  - Joshi, Prajakta
+A1  - Devine, Sherral
+A1  - Au, Rhoda
+A1  - Dams-O'Connor, Kristen
+A1  - Saykin, Andrew J.
+A1  - Seshadri, Sudha
+A1  - Beiser, Alexa
+A1  - Aparicio, Hugo J.
+A1  - Salinas, Joel
+A1  - Gonzales, Mitzi M.
+A1  - Pase, Matthew P.
+A1  - Ghosh, Saptaparni
+A1  - Finney, Rebecca
+A1  - Mez, Jesse
+A1  - Crane, Paul K.
+VL  - 37
+IS  - 4
+SP  - 383
+EP  - 397
+Y1  - 2023
+CY  - US
+AD  - Crane, Paul K.: Department of Medicine, University of Washington, P.O. Box 359780, 325 Ninth Avenue, Seattle, WA, US, 98104, pcrane@uw.edu
+PB  - American Psychological Association
+SN  - 1931-1559(Electronic),0894-4105(Print)
+N2  - Objective: To calibrate cognitive assessment data across multiple waves of the Framingham Heart Study (FHS), addressing study design considerations, ceiling effects, and measurement precision. Method: FHS participants completed several cognitive assessments including screening instruments and more comprehensive batteries at different study visits. We used expert opinion to assign each cognitive test item to a single domain—memory, executive function, language, visuospatial abilities, or none of the above. As part of a larger cross-study harmonization effort, we calibrated each domain separately using bifactor confirmatory factor analysis (CFA) models, incorporating item parameters for anchor items previously calibrated from other studies and freely estimating item parameters for FHS-specific items. We obtained scores and standard errors (SEs) for each participant at each study visit. We addressed psychometric considerations of ceiling effects and measurement precision. Results: Overall, memory domain scores were the most precisely estimated. Scores for all domains from visits where the Mini-Mental State Examination (MMSE) was the only test administered were imprecisely estimated and suffered from ceiling effects. Scores from visits with a more extensive battery were estimated more precisely and better differentiated between ability levels. Conclusions: The harmonized and calibrated cognitive data from the FHS should prove useful for future analyses examining cognition and cognitive decline. They will be of particular interest when combining FHS with other studies that have been similarly calibrated. Researchers should be aware of varying levels of measurement precision and the possibility of ceiling effects in their planned analyses of data from the FHS and similar studies. (PsycInfo Database Record (c) 2025 APA, all rights reserved)
+KW  - *Cognitive Assessment
+KW  - *Confirmatory Factor Analysis
+KW  - *Error of Measurement
+KW  - *Heart
+KW  - *Item Response Theory
+KW  - Mini Mental State Examination
+M3  - doi:10.1037/neu0000828
+DO  - 10.1037/neu0000828
+ER  -
