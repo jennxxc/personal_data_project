@@ -2,48 +2,40 @@
 
 An independent SQL and Python project analyzing five decades of Statistics Norway (SSB) pensionable income data to uncover how economic gender equality has evolved across two dimensions: income and participation.
 
+🔗 **[Read the full data story and view interactive visualizations on my Portfolio Website](https://xiuxianjenniferc.vercel.app/projects/norway-gender-income-gap)**
+
+---
 ## 🛠️ Tech Stack
 - **Database:** MySQL (CTEs, Window Functions, DDL, Indexing)
 - **Data Processing:** Python (Pandas, SQLAlchemy)
 - **Visualization:** Matplotlib
-
-## 📌 Executive Summary
-Between 1967 and 2024, the gender income gap in Norway narrowed substantially, yet significant disparities persist. While the female-to-male median income ratio improved markedly, the absolute NOK gap and compound wealth index reveal a persistent top-tier concentration among men. Furthermore, despite a massive influx of women into the taxable population, structural differences in the labor market remain. The distinct inflection points and cyclic fluctuations across the data strongly suggest that macroeconomic shifts and policy changes have continuously shaped these structural dynamics over the past five decades.
-
-## 📊 Key Findings & Visualizations
-
-### 1. Income Ratio: Median vs. Average
-![Income Ratio](https://github.com/jennxxc/personal_data_project/tree/main/norway-gender-income-gap/figure/gender_income_gap.png)
-**Insight:** The female-to-male median income ratio and the female-to-male average income ratio both exhibit a notable trough in 1974, followed by a long-term upward trend. A structural shift is evident around 1993: prior to this, the average ratio consistently exceeded the median ratio, but afterward, the median ratio overtook the average and remained higher.
-
-### 2. Distribution Skewness: The Top-Tier Effect
-![Skewness](https://github.com/jennxxc/personal_data_project/tree/main/norway-gender-income-gap/figure/income_skewness_trend.png)
-**Insight:** The skewness (average income minus median income) explains the 1993 crossover. Prior to 1993, female income exhibited a higher absolute skewness than male income (female average > female median). After 1993, this reversed: male skewness surged dramatically, indicating that a growing concentration of high earnings among men pulled the male average up, while female skewness remained lower and relatively stable.
-
-### 3. Absolute Gap: The NOK Reality
-![Absolute Gap](https://github.com/jennxxc/personal_data_project/tree/main/norway-gender-income-gap/figure/gender_income_gap_median.png)
-**Insight:** While the relative ratios suggest convergence, the absolute NOK gap remains large and highly cyclical. The gap shows distinct troughs (e.g., 2003, 2008, 2015) and sudden peaks (e.g., 2021). These fluctuations often coincide with macroeconomic cycles, such as the 2008 financial crisis and the post-pandemic energy boom in 2021, which disproportionately impact male-dominated sectors.
-
-### 4. Decadal Shift: The Momentum
-![Decadal Shift](https://github.com/jennxxc/personal_data_project/tree/main/norway-gender-income-gap/figure/decadal_trend.png)
-**Insight:**  When aggregating by decade, the 1990s delivered the most aggressive improvement in the female-to-male ratio (+12 pp). This period aligns with the expansion of Norway's public sector and welfare services. However, since 2010, progress has plateaued, suggesting that earlier policy interventions may have reached their structural limits.
-
-### 5. Indexed Growth: The Compounding Gap
-![Indexed Growth](https://github.com/jennxxc/personal_data_project/tree/main/norway-gender-income-gap/figure/income_index.png)
-**Insight:** By indexing to 1967 (female = 100), the compounding effect of economic growth becomes clear. While the female-to-male ratio improves, the absolute indexed income of males reached 4514, compared to 3773 for females. The shaded gap demonstrates that relative convergence does not prevent an exponential widening of the absolute monetary gap over time.
-
-### 6. Participation: The Underlying Driver
-![Participation](https://github.com/jennxxc/personal_data_project/tree/main/norway-gender-income-gap/figure/female_share.png)
-**Insight:** The labor participation data provides context for the long-term trend. The primary chart shows female participation rising from 33.9% to 46.6%. Crucially, the inset reveals this was not a result of male withdrawal: both genders saw an increase in absolute taxable persons. However, female earners experienced a much steeper absolute growth (from ~0.4M to 1.65M), while male earners grew more gradually (from ~1.0M to 1.9M)
-
 ---
-
-## 🔍 Data Quality & Interpretation
-
-- **Data Quality Check:** I examined the dataset and discovered a micro-discrepancy (~0.0004%) between the official Both sexes and the sum of Females + Males. To ensure consistency, all calculations used Females + Males.
-- **Handling Partial Windows:** For the 5-year moving average, years 1967-1970 did not have enough historical data. I handled this by setting early years to NULL in the SQL query, preventing AVG() calculating misleading partial averages.
-
 ## 📂 Repository Structure
-- `data/`: Contains the raw and processed datasets.
-- `figure/`: Contains the generated visualizations.
-- `code/`: Contains the Python ETL scripts and the SQL queries used for the analysis.
+```text
+├── data/                  
+│   ├── raw/               # Original SSB dataset (CSV)
+│   └── processed/         # Cleaned and pivoted dataset ready for SQL import
+├── sql/                   
+│   ├── Create_DataBase_Pensionable_Income_norge.sql  # DDL for MySQL schema setup
+│   ├── 01_gender_income_ratio.sql    # Q1: Median/Average ratio trends
+│   ├── 02_absolute_gap.sql           # Q2: Absolute NOK gap & YoY changes
+│   ├── 03_decadal_shift.sql          # Q3: Decadal aggregation & momentum
+│   ├── 04_income_index.sql           # Q4: Indexing to 1967 baseline
+│   └── 05_participation_share.sql    # Q5: Female participation & 5-year moving average
+├── scripts/               
+│   ├── clean_income.ipynb            # Python ETL: parsing, melting, and cleaning
+│   └── visualized_income.ipynb       # Python visualization connected via SQLAlchemy
+└── README.md
+
+## 💻 Technical Implementation
+
+### 1. Data Pipeline & Engineering
+- **ETL (Extract, Transform, Load):** Raw SSB data was parsed from a wide format CSV using Pandas, unpivoted (melted) into a long format, cleaned of missing values, and exported to a processed CSV (`clean_income.ipynb`).
+- **Database Design:** A normalized MySQL database schema was designed with a primary key on `(sex, year)` and an index on `year` to optimize time-series queries.
+- **Data Quality Check:** Discovered a micro-discrepancy (~0.0004%) between the official `Both sexes` aggregate and the sum of `Females + Males`. To ensure mathematical consistency, all downstream SQL calculations explicitly filter and aggregate only `Males` and `Females`.
+
+### 2. SQL Techniques Demonstrated
+- **Conditional Aggregation (Pivoting):** Used `MAX(CASE WHEN sex='Males' THEN ... END)` to pivot rows into columns, allowing simultaneous calculation of male and female metrics per year.
+- **Window Functions:** Used `LAG()` to calculate Year-over-Year (YoY) changes for the absolute gap, and `AVG() OVER (ORDER BY year ROWS BETWEEN 4 PRECEDING AND CURRENT ROW)` to calculate the 5-year moving average for female participation.
+- **Handling Partial Windows:** For the 5-year moving average, years 1967-1970 did not have enough historical data. Handled by setting early years to `NULL` in the SQL query via conditional logic, preventing `AVG()` from calculating misleading partial averages.
+- **Common Table Expressions (CTEs):** Used to modularize complex queries, such as calculating decadal averages and joining them back to yearly data for momentum analysis.
